@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Выбор темы - Пиписница</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            color: white;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        .bg-video-wrapper {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .bg-video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        #backToMain {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            padding: 12px 25px;
+            font-size: 1.1rem;
+            background: linear-gradient(145deg, #6a11cb, #2575fc);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            z-index: 100;
+        }
+
+        #backToMain:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+            background: linear-gradient(145deg, #2575fc, #6a11cb);
+        }
+
+        #content {
+            width: 90%;
+            max-width: 600px;
+            margin: 80px auto 40px;
+            padding: 30px;
+            background-color: rgba(0, 0, 0, 0.6);
+            border-radius: 15px;
+            backdrop-filter: blur(5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        #choiseTheme {
+            text-align: center;
+            font-size: 2.2rem;
+            font-weight: bold;
+            color: #ff6b6b;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+        }
+
+        .theme-row {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            padding: 10px 15px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .theme-row:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            transform: translateX(5px);
+        }
+
+        input[type="checkbox"] {
+            appearance: none;
+            -webkit-appearance: none;
+            width: 22px;
+            height: 22px;
+            border: 2px solid #6a11cb;
+            border-radius: 5px;
+            margin-right: 15px;
+            position: relative;
+            cursor: pointer;
+            flex-shrink: 0;
+        }
+
+        input[type="checkbox"]:checked {
+            background: linear-gradient(145deg, #6a11cb, #2575fc);
+            border-color: #2575fc;
+        }
+
+        input[type="checkbox"]:checked::after {
+            content: "✓";
+            position: absolute;
+            color: white;
+            font-size: 14px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .theme-label {
+            font-size: 1.2rem;
+            cursor: pointer;
+        }
+
+        #startGameButton {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            font-size: 1.3rem;
+            background: linear-gradient(145deg, #ff6b6b, #ff8e8e);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            margin-top: 30px;
+        }
+
+        #startGameButton:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+            background: linear-gradient(145deg, #ff8e8e, #ff6b6b);
+        }
+
+        /* Адаптация для телефонов */
+        @media (max-width: 768px) {
+            #backToMain {
+                top: 15px;
+                left: 15px;
+                padding: 10px 20px;
+                font-size: 1.5rem;
+            }
+            
+            #content {
+                width: 95%;
+                padding: 20px 15px;
+                margin: 70px auto 30px;
+            }
+            
+            #choiseTheme {
+                font-size: 1.8rem;
+                margin-bottom: 20px;
+            }
+            
+            .theme-row {
+                margin-bottom: 12px;
+                padding: 8px 12px;
+            }
+            
+            .theme-label {
+                font-size: 1.1rem;
+            }
+            
+            input[type="checkbox"] {
+                width: 20px;
+                height: 20px;
+                margin-right: 12px;
+            }
+            
+            #startGameButton {
+                padding: 12px;
+                font-size: 1.1rem;
+                margin-top: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            #backToMain {
+                top: 10px;
+                left: 10px;
+                padding: 8px 16px;
+                font-size: 1.5rem;
+            }
+            
+            #choiseTheme {
+                font-size: 1.5rem;
+            }
+            
+            .theme-label {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-video-wrapper">
+        <video class="bg-video" autoplay loop muted playsinline>
+            <!-- Замените на свой путь к видео -->
+            <source src="videos/gosling.mp4" type="video/mp4">
+        </video>
+    </div>
+
+    <button id="backToMain" onclick="backToMain()">Назад</button>
+
+    <div id="content">
+        <p id="choiseTheme">Выбери тему</p>
+        
+        <div class="theme-row">
+            <input type="checkbox" id="all">
+            <label for="all" class="theme-label">Все</label>
+        </div>
+        
+        <div class="theme-row">
+            <input type="checkbox" id="information">
+            <label for="information" class="theme-label">Информатика</label>
+        </div>
+        
+        <div class="theme-row">
+            <input type="checkbox" id="phylosophy">
+            <label for="phylosophy" class="theme-label">Философия</label>
+        </div>
+        
+        <div class="theme-row">
+            <input type="checkbox" id="math">
+            <label for="math" class="theme-label">Математика</label>
+        </div>
+        
+        <div class="theme-row">
+            <input type="checkbox" id="biology">
+            <label for="biology" class="theme-label">Биология</label>
+        </div>
+        
+        <div class="theme-row">
+            <input type="checkbox" id="sleng">
+            <label for="sleng" class="theme-label">Сленг</label>
+        </div>
+        
+        <button id="startGameButton" onclick="startGame()">Начать</button>
+    </div>
+
+
+</body>
+<script src="main.js"></script>
+<script src="game.js"></script>
+</html>

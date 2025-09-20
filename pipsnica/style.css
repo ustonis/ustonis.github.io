@@ -1,0 +1,126 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding-top: 100px;
+    color: white;
+    overflow-x: hidden;
+    position: relative;
+}
+
+.bg-video-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.bg-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+#content {
+    width: 90%;
+    max-width: 800px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    padding: 30px;
+    border-radius: 15px;
+
+}
+
+#blockOfNameSite {
+    text-align: center;
+}
+
+#NameSite {
+    font-size: 3.5rem;
+    font-weight: bold;
+    text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.8);
+    color: #ff6b6b;
+    margin-bottom: 10px;
+}
+
+#blockOfListFunc {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+    max-width: 400px;
+}
+
+#blockOfListFunc button {
+    padding: 18px 25px;
+    font-size: 1.3rem;
+    background: linear-gradient(145deg, #6a11cb, #2575fc);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+#blockOfListFunc button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+    background: linear-gradient(145deg, #2575fc, #6a11cb);
+}
+
+#blockOfListFunc button:active {
+    transform: translateY(1px);
+}
+
+
+@media (max-width: 768px) {
+    body {
+        padding-top: 30px;
+    }
+    
+    #content {
+        width: 95%;
+        padding: 20px 15px;
+        gap: 20px;
+    }
+    
+    #NameSite {
+        font-size: 2.5rem;
+    }
+    
+    #blockOfListFunc {
+        gap: 15px;
+    }
+    
+    #blockOfListFunc button {
+        padding: 15px 20px;
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    #NameSite {
+        font-size: 2rem;
+    }
+    
+    #blockOfListFunc button {
+        padding: 12px 18px;
+        font-size: 1.5rem;
+    }
+}
