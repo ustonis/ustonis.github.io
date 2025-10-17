@@ -1,0 +1,113 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+#mainContent {
+    margin: 20px auto;
+    justify-content: center;
+}
+
+
+
+body {
+    width: 90%;
+    max-width: 800px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    padding: 30px;
+    border-radius: 15px;
+
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+    max-width: 400px;
+    margin: auto;
+}
+
+.da {
+    padding: 18px 25px;
+    font-size: 1.3rem;
+    background: linear-gradient(145deg, #6a11cb, #2575fc);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    
+} 
+
+body button{
+    padding: 18px 25px;
+    font-size: 1.3rem;
+    background: linear-gradient(145deg, #6a11cb, #2575fc);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+body button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+    background: linear-gradient(145deg, #2575fc, #6a11cb);
+}
+
+body button:active {
+    transform: translateY(1px);
+}
+
+p {
+    font-size: 30px;
+    color: #6a11cb;
+}
+
+.bg-video-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.bg-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+.button {
+    width: 30px;
+    height: 30px;
+    border: 1px solid #ccc;
+    background-color: #f0f0f0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
+
+.button:hover {
+    background-color: #d0d0d0;
+}
+
+.button:disabled {
+    cursor: not-allowed;
+    background-color: #e0e0e0;
+}

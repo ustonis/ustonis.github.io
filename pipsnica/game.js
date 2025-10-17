@@ -76,6 +76,8 @@ const russianAlphabet = [
     'э', 'ю', 'я'
 ];
 
+
+
 function startGame() {
     let a = null;
     for (let i=0;i<idArray.length;i++) {
@@ -169,6 +171,7 @@ let jo = 0;
 let word1 = localStorage.getItem('currentWord') || "слово";
 let theme2 = localStorage.getItem('currentTheme') || "тема";
 let usedLetters = JSON.parse(localStorage.getItem('usedLetters')) || [];
+localStorage.setItem('myData', JSON.stringify(history));
 
 function upd() {
     let f = document.getElementById("word_")
@@ -190,16 +193,6 @@ function startpipi() {
 function game(element) {
     let b = element.innerText
     let letterFound = false;
-    /* let a = document.getElementById("knopki");
-    let textSpan = document.getElementById("gameText"); */
-/*     if (!textSpan) {
-        textSpan = document.createElement("span");
-        textSpan.id = "gameText";
-        a.appendChild(textSpan); 
-    }
-    
-  
-    textSpan.textContent += (textSpan.textContent ? ' ' : '') + b; */
 
     for (let i = 0; i<anus.length;i++) {
         if (b==kuni[i]) {
@@ -216,6 +209,14 @@ function game(element) {
     }
     /* bu.value = ''; */
      if (anus.join("")==kuni.join("")) {
+
+        let k = new History(theme2,word1,russi,"Победа")
+        let history = JSON.parse(localStorage.getItem('myData')) || [];
+        history.push(k)
+        localStorage.setItem('myData', JSON.stringify(history));
+        
+
+
         setTimeout(() => {
             alert("🎉 Поздравляем! Вы отгадали слово: " + word1);
             localStorage.removeItem('currentWord');
@@ -231,6 +232,11 @@ function game(element) {
         let h = document.getElementById(`pi${g}`)
         h.style.display = "block"
         if (russi<2) { 
+            let k = new History(theme2,word1,russi,"Проигрыш",new Date().toLocaleString('ru-RU'))
+            let history = JSON.parse(localStorage.getItem('myData')) || [];
+            history.push(k)
+            localStorage.setItem('myData', JSON.stringify(history));
+ 
             setTimeout(() => {
                 document.getElementById("monk1").play()
                 document.getElementById("monk2").play()
@@ -245,4 +251,19 @@ function game(element) {
     }
 
     jo = 0
+}
+
+
+class History {
+    constructor(themeGame,wordGame,numberTryes,statusGame) {
+        this.themeGame = themeGame;
+        this.wordGame = wordGame;
+        this.numberTryes = numberTryes;
+        this.statusGame = statusGame;
+        this.date = new Date().toLocaleString('ru-RU');
+    }
+};
+
+function showHistory() {
+    console.log(JSON.parse(localStorage.getItem('myData')) || []);
 }

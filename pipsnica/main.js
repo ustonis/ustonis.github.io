@@ -23,6 +23,11 @@ document.getElementById('all').addEventListener('change', function() {
 });
 
 
+function returnToMain() {
+    localStorage.setItem('difGame', null);
+    window.location.href = "index.html"
+}
+
 
 
 
